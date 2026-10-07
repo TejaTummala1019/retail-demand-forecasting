@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Retail Demand Forecasting</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Retail Demand Forecasting</h1>
+            <p>Upload your CSV file and predict product demand using Machine Learning</p>
+        </header>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+
+            <h2>Upload Retail Data</h2>
+
+            <div class="upload-box">
+
+                <input
+                    type="file"
+                    id="csvFile"
+                    accept=".csv"
+                >
+
+                <p id="fileName">No file selected</p>
+
+                <button id="predictBtn">
+                    Predict Demand
+                </button>
+
+            </div>
+
+            <p id="status"></p>
+
+        </section>
+
+
+        <!-- Dashboard -->
+        <section id="dashboard" class="dashboard hidden">
+
+            <div class="card">
+                <h3>Total Records</h3>
+                <p id="totalRecords">-</p>
+            </div>
+
+            <div class="card">
+                <h3>Average Predicted Demand</h3>
+                <p id="averageDemand">-</p>
+            </div>
+
+            <div class="card">
+                <h3>Minimum Demand</h3>
+                <p id="minimumDemand">-</p>
+            </div>
+
+            <div class="card">
+                <h3>Maximum Demand</h3>
+                <p id="maximumDemand">-</p>
+            </div>
+
+        </section>
+
+
+        <!-- Model Metrics -->
+        <section id="metricsSection" class="metrics hidden">
+
+            <h2>Model Performance</h2>
+
+            <div class="metric-container">
+
+                <div class="metric-card">
+                    <h3>MAE</h3>
+                    <p id="mae">-</p>
+                </div>
+
+                <div class="metric-card">
+                    <h3>RMSE</h3>
+                    <p id="rmse">-</p>
+                </div>
+
+                <div class="metric-card">
+                    <h3>R² Score</h3>
+                    <p id="r2">-</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Chart -->
+        <section id="chartSection" class="chart-section hidden">
+
+            <h2>Demand Prediction</h2>
+
+            <canvas id="demandChart"></canvas>
+
+        </section>
+
+
+        <!-- Data Table -->
+        <section id="tableSection" class="table-section hidden">
+
+            <h2>Uploaded Data & Predictions</h2>
+
+            <div class="table-container">
+
+                <table id="dataTable">
+
+                    <thead>
+                        <tr id="tableHeader"></tr>
+                    </thead>
+
+                    <tbody id="tableBody"></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
