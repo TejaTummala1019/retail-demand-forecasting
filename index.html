@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>RetailIQ | Demand Forecasting</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- Background decorative elements -->
+
+    <div class="background-shape shape-one"></div>
+    <div class="background-shape shape-two"></div>
+    <div class="background-grid"></div>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                R
+            </div>
+
+            <div>
+
+                <h2>
+                    Retail<span>IQ</span>
+                </h2>
+
+                <p>
+                    DEMAND INTELLIGENCE
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            ML System Ready
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-container">
+
+
+        <!-- Heading -->
+
+        <section class="page-heading">
+
+            <div class="heading-tag">
+                RETAIL ANALYTICS PLATFORM
+            </div>
+
+            <h1>
+                Retail Demand
+                <span>Forecasting</span>
+            </h1>
+
+            <p>
+                Upload your historical retail sales data
+                and use machine learning to predict
+                future product demand.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= UPLOAD CARD ================= -->
+
+        <section class="upload-card">
+
+
+            <div class="card-heading">
+
+                <div class="heading-icon">
+                    ↑
+                </div>
+
+                <div>
+
+                    <h2>
+                        Upload Retail Sales Data
+                    </h2>
+
+                    <p>
+                        Upload your CSV dataset to generate
+                        demand predictions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Upload area -->
+
+            <div
+                class="upload-area"
+                id="uploadArea"
+            >
+
+                <div class="upload-symbol">
+                    ↑
+                </div>
+
+
+                <h3>
+                    Upload your CSV dataset
+                </h3>
+
+
+                <p>
+                    Drag & drop your file here
+                    or
+                    <label for="fileInput">
+                        browse from your device
+                    </label>
+                </p>
+
+
+                <small>
+                    Supported format: CSV
+                    &nbsp; • &nbsp;
+                    Maximum size: 50 MB
+                </small>
+
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    accept=".csv"
+                    hidden
+                >
+
+            </div>
+
+
+
+            <!-- Selected file -->
+
+            <div
+                class="selected-file"
+                id="selectedFile"
+            >
+
+                <div class="csv-icon">
+                    CSV
+                </div>
+
+                <div class="file-details">
+
+                    <strong id="fileName">
+                        dataset.csv
+                    </strong>
+
+                    <span id="fileInfo">
+                        CSV file
+                    </span>
+
+                </div>
+
+                <button
+                    id="removeFile"
+                    class="remove-button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <!-- Error -->
+
+            <div
+                id="errorMessage"
+                class="error-message"
+            ></div>
+
+
+
+            <!-- Predict -->
+
+            <button
+                id="predictButton"
+                class="predict-button"
+                disabled
+            >
+
+                <span>
+                    Predict Demand
+                </span>
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- ================= RESULT ================= -->
+
+<section
+    id="resultSection"
+    class="result-section"
+>
+
+    <div class="result-title">
+
+        <div class="result-label">
+            RETAIL DEMAND ANALYSIS
+        </div>
+
+        <h2>
+            Demand Analysis Result
+        </h2>
+
+        <p>
+            Results calculated directly from your uploaded retail dataset.
+        </p>
+
+    </div>
+
+
+    <!-- Overall Demand -->
+
+    <div class="prediction-card">
+
+        <div class="prediction-icon">
+            ↗
+        </div>
+
+
+        <div>
+
+            <span class="prediction-small">
+                OVERALL RETAIL DEMAND
+            </span>
+
+            <h3 id="predictionText">
+                Waiting for dataset
+            </h3>
+
+            <p id="predictionDescription">
+                Upload a CSV file and click Predict Demand.
+            </p>
+
+        </div>
+
+
+        <div class="confidence">
+
+            <span>
+                Total Demand
+            </span>
+
+            <strong id="confidenceValue">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Demand Summary -->
+
+    <div class="probability-grid">
+
+
+        <div class="probability-card">
+
+            <div class="probability-header">
+
+                <span>
+                    Highest Demand Product
+                </span>
+
+                <div class="small-icon high">
+                    ↑
+                </div>
+
+            </div>
+
+            <strong id="topProduct">
+                -
+            </strong>
+
+            <div class="demand-product-value"
+                 id="topProductDemand">
+                0 units
+            </div>
+
+        </div>
+
+
+
+        <div class="probability-card">
+
+            <div class="probability-header">
+
+                <span>
+                    Products Analyzed
+                </span>
+
+                <div class="small-icon high">
+                    #
+                </div>
+
+            </div>
+
+            <strong id="productCount">
+                0
+            </strong>
+
+            <div class="demand-product-value">
+                products
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- Dataset information -->
+
+    <div class="dataset-info">
+
+
+        <div class="info-item">
+
+            <span>
+                Input Type
+            </span>
+
+            <strong>
+                CSV
+            </strong>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span>
+                Rows Processed
+            </span>
+
+            <strong id="rowsProcessed">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span>
+                Products
+            </span>
+
+            <strong id="productsProcessed">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span>
+                Demand Column
+            </span>
+
+            <strong id="demandColumnUsed">
+                -
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- Product-wise demand -->
+
+    <div
+        id="productDemandTable"
+        class="product-demand-table"
+    >
+
+        <h3>
+            Product-wise Demand
+        </h3>
+
+        <p>
+            Upload a dataset to view demand for each product.
+        </p>
+
+    </div>
+
+
+</section>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            RetailIQ • AI-Powered Retail Demand Intelligence
+        </p>
+
+        <span>
+            Machine Learning Forecasting System
+        </span>
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

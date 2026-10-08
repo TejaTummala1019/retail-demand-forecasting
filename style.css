@@ -1,0 +1,1880 @@
+/* =====================================================
+   RETAILIQ
+   RETAIL DEMAND FORECASTING
+   ===================================================== */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    min-height: 100vh;
+
+    color: #172033;
+
+    background:
+
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(59, 130, 246, 0.14),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 90% 30%,
+            rgba(139, 92, 246, 0.10),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #f4f7fc 0%,
+            #eef4ff 50%,
+            #f8f7ff 100%
+        );
+
+    position: relative;
+
+    overflow-x: hidden;
+
+}
+
+
+/* =====================================================
+   BACKGROUND
+   ===================================================== */
+
+.background-grid {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.35;
+
+    background-image:
+
+        linear-gradient(
+            rgba(37, 99, 235, 0.035) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(37, 99, 235, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+
+}
+
+
+.background-shape {
+
+    position: fixed;
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    pointer-events: none;
+
+}
+
+
+.shape-one {
+
+    width: 420px;
+    height: 420px;
+
+    background:
+        rgba(59, 130, 246, 0.12);
+
+    top: -180px;
+    left: -150px;
+
+}
+
+
+.shape-two {
+
+    width: 450px;
+    height: 450px;
+
+    background:
+        rgba(139, 92, 246, 0.10);
+
+    right: -180px;
+    bottom: -180px;
+
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.header {
+
+    height: 76px;
+
+    padding: 0 7%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.08);
+
+    background:
+        rgba(7,17,31,0.70);
+
+    backdrop-filter:
+        blur(18px);
+
+    position: relative;
+
+    z-index: 10;
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+}
+
+
+.brand-logo {
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #38bdf8
+        );
+
+    box-shadow:
+        0 8px 30px
+        rgba(37,99,235,0.35);
+
+}
+
+
+.brand h2 {
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+}
+
+
+.brand h2 span {
+
+    color: #38bdf8;
+
+}
+
+
+.brand p {
+
+    font-size: 8px;
+
+    letter-spacing: 1.7px;
+
+    color: #94a3b8;
+
+    margin-top: 2px;
+
+}
+
+
+.system-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 14px;
+
+    border-radius: 30px;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    background:
+        rgba(255,255,255,0.04);
+
+    color: #cbd5e1;
+
+    font-size: 12px;
+
+}
+
+
+.status-dot {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 10px #22c55e;
+
+}
+
+
+/* =====================================================
+   MAIN
+   ===================================================== */
+
+.main-container {
+
+    width: min(950px, 92%);
+
+    margin: auto;
+
+    padding:
+        65px 0 80px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* =====================================================
+   PAGE HEADING
+   ===================================================== */
+
+.page-heading {
+
+    text-align: center;
+
+    margin-bottom: 38px;
+
+}
+
+
+.heading-tag {
+
+    display: inline-block;
+
+    padding: 7px 13px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(37,99,235,0.12);
+
+    border:
+        1px solid rgba(59,130,246,0.25);
+
+    color: #60a5fa;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 16px;
+
+}
+
+
+.page-heading h1 {
+
+    font-size:
+        clamp(38px, 5vw, 56px);
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+
+    font-weight: 800;
+
+}
+
+
+.page-heading h1 span {
+
+    background:
+        linear-gradient(
+            90deg,
+            #3b82f6,
+            #38bdf8
+        );
+
+  -webkit-background-clip: text;
+background-clip: text;
+
+-webkit-text-fill-color: transparent;
+
+}
+
+
+.page-heading p {
+
+    max-width: 600px;
+
+    margin:
+        18px auto 0;
+
+    color: #94a3b8;
+
+    line-height: 1.7;
+
+    font-size: 15px;
+
+}
+
+
+/* =====================================================
+   UPLOAD CARD
+   ===================================================== */
+
+.upload-card {
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,0.97);
+
+    color: #0f172a;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,0.30);
+
+    border:
+        1px solid rgba(255,255,255,0.4);
+
+}
+
+
+/* Card heading */
+
+.card-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 23px;
+
+}
+
+
+.heading-icon {
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 26px;
+
+    font-weight: 700;
+
+    color: #2563eb;
+
+    background: #eaf2ff;
+
+}
+
+
+.card-heading h2 {
+
+    font-size: 19px;
+
+}
+
+
+.card-heading p {
+
+    margin-top: 4px;
+
+    font-size: 13px;
+
+    color: #64748b;
+
+}
+
+
+/* =====================================================
+   UPLOAD AREA
+   ===================================================== */
+
+.upload-area {
+
+    min-height: 190px;
+
+    border:
+        2px dashed #c7d7ed;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fbff,
+            #f3f8ff
+        );
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
+}
+
+
+.upload-area:hover,
+.upload-area.dragover {
+
+    border-color: #2563eb;
+
+    background: #eef5ff;
+
+    transform: translateY(-1px);
+
+}
+
+
+.upload-symbol {
+
+    width: 54px;
+    height: 54px;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #e5efff;
+
+    color: #2563eb;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    margin-bottom: 13px;
+
+}
+
+
+.upload-area h3 {
+
+    font-size: 15px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.upload-area p {
+
+    font-size: 13px;
+
+    color: #64748b;
+
+}
+
+
+.upload-area label {
+
+    color: #2563eb;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+
+.upload-area small {
+
+    display: block;
+
+    margin-top: 11px;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+
+}
+
+
+/* =====================================================
+   FILE
+   ===================================================== */
+
+.selected-file {
+
+    display: none;
+
+    align-items: center;
+
+    margin-top: 14px;
+
+    padding: 12px 14px;
+
+    border-radius: 12px;
+
+    background: #f5f8fc;
+
+    border:
+        1px solid #e2e8f0;
+
+}
+
+
+.selected-file.show {
+
+    display: flex;
+
+}
+
+
+.csv-icon {
+
+    width: 43px;
+    height: 43px;
+
+    border-radius: 10px;
+
+    background: #dcfce7;
+
+    color: #15803d;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+}
+
+
+.file-details {
+
+    flex: 1;
+
+    margin-left: 12px;
+
+}
+
+
+.file-details strong {
+
+    display: block;
+
+    font-size: 13px;
+
+}
+
+
+.file-details span {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+}
+
+
+.remove-button {
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 25px;
+
+    color: #64748b;
+
+    cursor: pointer;
+
+}
+
+
+/* =====================================================
+   ERROR
+   ===================================================== */
+
+.error-message {
+
+    display: none;
+
+    margin-top: 10px;
+
+    padding: 10px;
+
+    background: #fef2f2;
+
+    color: #dc2626;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+}
+
+
+/* =====================================================
+   PREDICT BUTTON
+   ===================================================== */
+
+.predict-button {
+
+    width: 100%;
+
+    height: 51px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    margin-top: 16px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #3b82f6
+        );
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    transition: 0.25s;
+
+}
+
+
+.predict-button:hover:not(:disabled) {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(37,99,235,0.30);
+
+}
+
+
+.predict-button:disabled {
+
+    background: #cbd5e1;
+
+    cursor: not-allowed;
+
+}
+
+
+/* =====================================================
+   RESULT SECTION
+   ===================================================== */
+
+.result-section {
+
+    margin-top: 55px;
+
+}
+
+
+.result-title {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+.result-label {
+
+    color: #60a5fa;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+}
+
+
+.result-title h2 {
+
+    font-size: 30px;
+
+}
+
+
+.result-title p {
+
+    color: #94a3b8;
+
+    margin-top: 7px;
+
+    font-size: 13px;
+
+}
+
+
+/* =====================================================
+   PREDICTION CARD
+   ===================================================== */
+
+.prediction-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37,99,235,0.18),
+            rgba(14,165,233,0.08)
+        );
+
+    border:
+        1px solid
+        rgba(96,165,250,0.25);
+
+    backdrop-filter: blur(10px);
+
+}
+
+
+.prediction-icon {
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 16px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+
+    background:
+        rgba(37,99,235,0.22);
+
+    color: #60a5fa;
+
+}
+
+
+.prediction-small {
+
+    display: block;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    color: #93c5fd;
+
+    font-weight: 700;
+
+}
+
+
+.prediction-card h3 {
+
+    font-size: 25px;
+
+    margin: 4px 0;
+
+}
+
+
+.prediction-card p {
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+}
+
+
+.confidence {
+
+    margin-left: auto;
+
+    text-align: right;
+
+}
+
+
+.confidence span {
+
+    display: block;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+
+}
+
+
+.confidence strong {
+
+    font-size: 25px;
+
+    color: #38bdf8;
+
+}
+
+
+/* =====================================================
+   PROBABILITY
+   ===================================================== */
+
+/* =====================================================
+   PRODUCT DEMAND TABLE
+   ===================================================== */
+
+.product-demand-table {
+
+    margin-top: 24px;
+
+    padding: 26px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 1px solid #e3e8f2;
+
+    box-shadow:
+        0 12px 35px rgba(30, 64, 175, 0.08);
+
+    color: #172033;
+
+}
+
+
+/* Header */
+
+.product-demand-table h3 {
+
+    font-size: 20px;
+
+    font-weight: 750;
+
+    color: #172033;
+
+    margin-bottom: 6px;
+
+}
+
+
+.product-demand-table > p {
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    margin-bottom: 22px;
+
+}
+
+
+/* Column header */
+
+.product-demand-table::before {
+
+    content:
+        "PRODUCT                              DEMAND              SHARE             STATUS";
+
+    display: block;
+
+    white-space: pre;
+
+    padding: 0 18px 12px;
+
+    border-bottom:
+        1px solid #e5eaf2;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+
+}
+
+
+/* Product row */
+
+.product-row {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(180px, 1fr)
+        150px
+        100px
+        100px;
+
+    align-items: center;
+
+    gap: 15px;
+
+    min-height: 64px;
+
+    padding: 10px 18px;
+
+    border-bottom:
+        1px solid #edf1f6;
+
+    background: #ffffff;
+
+    transition: all 0.2s ease;
+
+}
+
+
+.product-row:hover {
+
+    background:
+        linear-gradient(
+            90deg,
+            #f5f9ff,
+            #ffffff
+        );
+
+    transform: translateX(3px);
+
+}
+
+
+/* Remove last border */
+
+.product-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+/* Product */
+
+.product-name {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.product-name::before {
+
+    content: "▣";
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #edf4ff;
+
+    color: #2563eb;
+
+    font-size: 14px;
+
+}
+
+
+.product-name strong {
+
+    color: #1e293b;
+
+    font-size: 13px;
+
+    font-weight: 650;
+
+}
+
+
+/* Demand */
+
+.product-demand {
+
+    text-align: left;
+
+}
+
+
+.product-demand strong {
+
+    display: block;
+
+    color: #2563eb;
+
+    font-size: 15px;
+
+    font-weight: 750;
+
+}
+
+
+.product-demand span {
+
+    display: block;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+
+    margin-top: 3px;
+
+}
+
+
+/* Status */
+
+.demand-status {
+
+    width: 82px;
+
+    padding: 7px 10px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    font-weight: 750;
+
+}
+
+
+/* High */
+
+.demand-status.high {
+
+    background: #e9f9ef;
+
+    color: #15803d;
+
+}
+
+
+/* Medium */
+
+.demand-status.medium {
+
+    background: #fff6df;
+
+    color: #b45309;
+
+}
+
+
+/* Low */
+
+.demand-status.low {
+
+    background: #fff0f0;
+
+    color: #dc2626;
+
+}
+
+
+/* =====================================================
+   RESULT SUMMARY CARDS
+   ===================================================== */
+
+.result-section {
+
+    margin-top: 55px;
+
+}
+
+
+/* Main result */
+
+.prediction-card {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f5f9ff
+        );
+
+    border:
+        1px solid #dce6f5;
+
+    color: #172033;
+
+    box-shadow:
+        0 15px 40px
+        rgba(30, 64, 175, 0.09);
+
+}
+
+
+/* Prediction text */
+
+.prediction-small {
+
+    color: #2563eb;
+
+}
+
+
+.prediction-card h3 {
+
+    color: #172033;
+
+}
+
+
+.prediction-card p {
+
+    color: #64748b;
+
+}
+
+
+/* Total demand */
+
+.confidence span {
+
+    color: #64748b;
+
+}
+
+
+.confidence strong {
+
+    color: #2563eb;
+
+}
+
+
+/* =====================================================
+   SUMMARY CARDS
+   ===================================================== */
+
+.probability-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 18px;
+
+    margin-top: 18px;
+
+}
+
+
+.probability-card {
+
+    background: #ffffff;
+
+    border:
+        1px solid #e2e8f0;
+
+    border-radius: 17px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(15, 23, 42, 0.06);
+
+    color: #172033;
+
+}
+
+
+.probability-header {
+
+    color: #64748b;
+
+}
+
+
+.probability-card > strong {
+
+    color: #172033;
+
+    font-size: 27px;
+
+}
+
+
+.demand-product-value {
+
+    margin-top: 5px;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+}
+
+
+/* =====================================================
+   DATASET INFORMATION
+   ===================================================== */
+
+.dataset-info {
+
+    margin-top: 18px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    padding: 20px;
+
+    border-radius: 17px;
+
+    background: #ffffff;
+
+    border:
+        1px solid #e2e8f0;
+
+    box-shadow:
+        0 10px 30px
+        rgba(15, 23, 42, 0.05);
+
+}
+
+
+.info-item {
+
+    text-align: center;
+
+    border-right:
+        1px solid #e5e7eb;
+
+}
+
+
+.info-item:last-child {
+
+    border-right: none;
+
+}
+
+
+.info-item span {
+
+    display: block;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.info-item strong {
+
+    color: #172033;
+
+    font-size: 14px;
+
+}
+
+
+/* =====================================================
+   RESULT TITLE
+   ===================================================== */
+
+.result-title h2 {
+
+    color: #172033;
+
+}
+
+
+.result-title p {
+
+    color: #64748b;
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+    .product-demand-table {
+
+        padding: 18px;
+
+        overflow-x: auto;
+
+    }
+
+
+    .product-demand-table::before {
+
+        content:
+            "PRODUCT                 DEMAND          SHARE       STATUS";
+
+    }
+
+
+    .product-row {
+
+        min-width: 600px;
+
+        grid-template-columns:
+            1fr 130px 90px 90px;
+
+    }
+
+
+    .probability-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .dataset-info {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 18px;
+
+    }
+
+
+    .info-item {
+
+        border-right: none;
+
+    }
+
+}
+
+
+.probability-card {
+
+    padding: 22px;
+
+    border-radius: 16px;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+}
+
+
+.probability-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    color: #cbd5e1;
+
+    font-size: 12px;
+
+}
+
+
+.small-icon {
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.small-icon.low {
+
+    background:
+        rgba(245,158,11,0.12);
+
+    color: #fbbf24;
+
+}
+
+
+.small-icon.high {
+
+    background:
+        rgba(34,197,94,0.12);
+
+    color: #4ade80;
+
+}
+
+
+.probability-card > strong {
+
+    display: block;
+
+    font-size: 28px;
+
+    margin: 13px 0;
+
+}
+
+
+.progress {
+
+    width: 100%;
+
+    height: 6px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+}
+
+
+.progress-bar {
+
+    height: 100%;
+
+    border-radius: 10px;
+
+}
+
+
+.low-bar {
+
+    width: 17.6%;
+
+    background: #f59e0b;
+
+}
+
+
+.high-bar {
+
+    width: 82.4%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #16a34a,
+            #38bdf8
+        );
+
+}
+
+
+/* =====================================================
+   DATASET INFO
+   ===================================================== */
+
+.dataset-info {
+
+    margin-top: 18px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    padding: 22px;
+
+    border-radius: 16px;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+}
+
+
+.info-item {
+
+    text-align: center;
+
+    border-right:
+        1px solid
+        rgba(255,255,255,0.08);
+
+}
+
+
+.info-item:last-child {
+
+    border-right: none;
+
+}
+
+
+.info-item span {
+
+    display: block;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.info-item strong {
+
+    color: #e2e8f0;
+
+    font-size: 14px;
+
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    padding:
+        25px 7%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+    .header {
+
+        padding: 0 5%;
+
+    }
+
+
+    .system-status {
+
+        display: none;
+
+    }
+
+
+    .main-container {
+
+        width: 92%;
+
+        padding-top: 45px;
+
+    }
+
+
+    .upload-card {
+
+        padding: 20px;
+
+    }
+
+
+    .prediction-card {
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .confidence {
+
+        width: 100%;
+
+        text-align: left;
+
+        margin-left: 78px;
+
+    }
+
+
+    .probability-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .dataset-info {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 20px;
+
+    }
+
+
+    .info-item {
+
+        border-right: none;
+
+    }
+
+
+    footer {
+
+        flex-direction: column;
+
+        gap: 8px;
+
+        text-align: center;
+
+    }
+
+}
+/* =====================================================
+   RESULT VISIBILITY FIX
+   ===================================================== */
+
+.probability-card {
+    background: #ffffff !important;
+    color: #172033 !important;
+    opacity: 1 !important;
+}
+
+
+.probability-header {
+    color: #64748b !important;
+    opacity: 1 !important;
+}
+
+
+.probability-card > strong {
+    color: #172033 !important;
+    opacity: 1 !important;
+}
+
+
+.demand-product-value {
+    color: #64748b !important;
+    opacity: 1 !important;
+}
+
+
+.dataset-info {
+    background: #ffffff !important;
+    color: #172033 !important;
+    opacity: 1 !important;
+}
+
+
+.info-item {
+    color: #172033 !important;
+    opacity: 1 !important;
+}
+
+
+.info-item span {
+    color: #64748b !important;
+    opacity: 1 !important;
+}
+
+
+.info-item strong {
+    color: #172033 !important;
+    opacity: 1 !important;
+}
+
+
+.product-demand-table {
+    background: #ffffff !important;
+    color: #172033 !important;
+    opacity: 1 !important;
+}
+
+
+.product-demand-table h3 {
+    color: #172033 !important;
+}
+
+
+.product-demand-table > p {
+    color: #64748b !important;
+}
+
+
+.product-row {
+    color: #172033 !important;
+    opacity: 1 !important;
+}
+
+
+.product-name strong {
+    color: #172033 !important;
+}
+
+
+.product-demand strong {
+    color: #2563eb !important;
+}
+
+
+.product-demand span {
+    color: #64748b !important;
+}
